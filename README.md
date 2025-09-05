@@ -4,7 +4,7 @@
     </a>
 </h2>
 <h2 align="center">
-   NETWORK PROGRAMMING
+   Ứng dụng trắc nghiệm trực tuyến
 </h2>
 <div align="center">
     <p align="center">
@@ -20,7 +20,8 @@
 </div>
 
 ## 📖 1. Giới thiệu
-Học phần trang bị cho người học những kiến thức nền tảng của lập trình mạng và các kỹ năng cần thiết để thiết kế và cài đặt các ứng dụng mạng và các chuẩn ở mức ứng dụng dựa trên mô hình Client/Server, có sử dụng các giao tiếp chương trình dựa trên Sockets. Kết thúc học phần, sinh viên có thể viết các chương trình ứng dụng mạng với giao thức tầng ứng dụng tự thiết kế.
+Bám sát mục tiêu học phần về lập trình mạng, đề tài này triển khai hệ thống trắc nghiệm trực tuyến theo mô hình Client/Server sử dụng Socket ở tầng ứng dụng, không dùng API web. Toàn bộ trao đổi giữa client và server được hiện thực bằng giao thức ứng dụng tự thiết kế chạy trên TCP , bảo đảm tính tin cậy và kiểm soát chặt chẽ luồng dữ liệu.
+Trong quá trình thực hiện, người học vận dụng các kỹ năng cốt lõi của lập trình mạng: quản lý kết nối đồng thời, thiết kế định dạng thông điệp, xử lý lỗi và bảo toàn phiên làm bài. Kết thúc đề tài, sinh viên có thể tự thiết kế và cài đặt giao thức tầng ứng dụng cho bài toán trắc nghiệm trực tuyến trên nền Socket TCP, triển khai và kiểm thử hoàn chỉnh trong môi trường Eclipse.
 
 ## 🔧 2. Ngôn ngữ lập trình sử dụng: [![Java](https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white)](https://www.java.com/)
 
