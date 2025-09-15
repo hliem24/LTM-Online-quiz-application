@@ -88,7 +88,7 @@ public class QuizClientSwing extends JFrame {
         lblFeedback.setForeground(SUBTEXT);
         lblFeedback.setFont(lblFeedback.getFont().deriveFont(Font.PLAIN, 14f));
 
-        // 🔥 CHỈ GIỮ TEXT TIẾN ĐỘ – KHÔNG CÒN PROGRESS BAR
+        //  CHỈ GIỮ TEXT TIẾN ĐỘ – KHÔNG CÒN PROGRESS BAR
         lblProgressText = new JLabel("Tiến độ: 0/0");
         lblProgressText.setForeground(SUBTEXT);
 
@@ -136,7 +136,7 @@ public class QuizClientSwing extends JFrame {
         bar.setBackground(BG);
         bar.setBorder(new EmptyBorder(16, 24, 8, 24));
 
-        lblAppTitle = new JLabel("🧠 Online Quiz (TCP)");
+        lblAppTitle = new JLabel(" Online Quiz (TCP)");
         lblAppTitle.setForeground(TEXT);
         lblAppTitle.setFont(lblAppTitle.getFont().deriveFont(Font.BOLD, 22f));
 
@@ -148,7 +148,7 @@ public class QuizClientSwing extends JFrame {
         txtUser = makeField("User", 10);
 
         btnConnect = makeAccentButton("Kết nối");
-        btnViewResults = makeSoftButton("📄 Xem kết quả");
+        btnViewResults = makeSoftButton(" Xem kết quả");
 
         right.add(makeLabel("Host"));
         right.add(txtHost);
@@ -286,7 +286,7 @@ public class QuizClientSwing extends JFrame {
             oos.flush();
 
             boolean isCorrect = ois.readBoolean();
-            if (isCorrect) { correct++; lblFeedback.setText("✅ Chính xác!"); lblFeedback.setForeground(SUCCESS); }
+            if (isCorrect) { correct++; lblFeedback.setText(" Chính xác!"); lblFeedback.setForeground(SUCCESS); }
             else { lblFeedback.setText("❌ Chưa đúng."); lblFeedback.setForeground(DANGER); }
 
             currentIndex++;
