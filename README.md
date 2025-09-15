@@ -43,7 +43,7 @@ Các chức năng chính:
 </p>
 
 <p align="center">
-  <img src="docs/giaodienkhidaketnoisever.jpg.jpg" alt="Ảnh 2" width="700"/>
+  <img src="docs/giaodienkhidaketnoisever.jpg" alt="Ảnh 2" width="700"/>
 </p>
 <p align="center">
   <em> Hình 2: Client sau khi kết nối sever</em>
@@ -51,7 +51,7 @@ Các chức năng chính:
 
 
 <p align="center">
-  <img src="docs/saukhilamxong.jpg.jpg" alt="Ảnh 3" width="500"/>
+  <img src="docs/saukhilamxong.jpg" alt="Ảnh 3" width="500"/>
  
 </p>
 <p align="center">
@@ -59,7 +59,7 @@ Các chức năng chính:
 </p>
 
 <p align="center">
-    <img src="docs/ketquasaukhixg.png.jpg" alt="Ảnh 4" width="450"/>
+    <img src="docs/ketquasaukhixg.png" alt="Ảnh 4" width="450"/>
 </p>
 <p align="center">
   <em> Hình 4: Kết quả sau khi lưu trữ </em>
