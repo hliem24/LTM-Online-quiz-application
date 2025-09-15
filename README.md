@@ -142,7 +142,7 @@ java QuizClientSwing.java
 6. **Xem lại**: Người dùng có thể nhấn 📄 Xem kết quả để mở bảng thống kê từ file.
 7. **Ngắt kết nối**: Đóng cửa sổ client hoặc mất mạng sẽ tự động ngắt kết nối.
 
-## Thông tin cá nhân
+## 👜Thông tin cá nhân
 **Họ tên**: Nguyễn Hoàng Liêm.  
 **Lớp**: CNTT 16-03.  
 **Email**: liemnguyenhoang22@gmail.com.
