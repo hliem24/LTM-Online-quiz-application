@@ -29,8 +29,8 @@ Các chức năng chính:
 2. Gửi và nhận câu hỏi – đáp án: Server gửi các câu hỏi trắc nghiệm đến client. Người dùng chọn đáp án, gửi về server; server kiểm tra và phản hồi kết quả đúng/sai theo thời gian thực.
 
 
-## 🔧 2. Công nghệ sử dụng
-
+## 🔧 2. Công nghệ sử dụng  
+Các công nghệ được sử dụng để xây dựng ứng dụng chat Client-Server sử dụng TCP với Java Swing:  
 
 ## 🚀 3. Các project đã thực hiện
 
