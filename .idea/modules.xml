@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/LTM-Online-quiz-application.iml" filepath="$PROJECT_DIR$/LTM-Online-quiz-application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/questions/questions.iml" filepath="$PROJECT_DIR$/questions/questions.iml" />
     </modules>
   </component>
 </project>

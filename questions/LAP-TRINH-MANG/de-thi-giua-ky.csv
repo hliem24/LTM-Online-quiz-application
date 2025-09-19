@@ -1,0 +1,20 @@
+"Trong Java, lớp nào dùng để lắng nghe kết nối TCP?","ServerSocket","Socket","DatagramSocket","URL",0
+"Để gửi UDP, ta dùng lớp nào?","ServerSocket","Socket","DatagramSocket","MulticastSocket",2
+"Phương thức nào của Socket trả về InputStream?","getInputStream()","openStream()","getReader()","getChannel()",0
+"Cổng mặc định HTTP là?","21","22","80","443",2
+"Khi đọc/ghi đối tượng qua mạng Java, hay dùng cặp luồng nào?","BufferedReader/PrintWriter","DataInputStream/DataOutputStream","ObjectInputStream/ObjectOutputStream","FileReader/FileWriter",2
+"Khi thiết kế protocol, điều gì quan trọng nhất?","Logo đẹp","Tài liệu rõ ràng","Đặt tên biến dài 200 ký tự","In nhiều System.out.println",1
+"Lỗi thường gặp khi truyền object giữa các phiên bản class khác nhau?","ClassNotFoundException","EOFError","LinkageLoss","TooMuchJavaException",0
+"TCP có cơ chế nào đảm bảo thứ tự gói?","Checksum","Sequence number & ACK","CRC","Magic number",1
+"Trong mô hình client-server, blocking I/O nghĩa là gì?","Luồng chờ dữ liệu đến","Luồng chạy song song","Luồng không bao giờ dừng","Luồng chỉ xử lý UI",0
+"Để tránh kẹt UI khi đọc socket trong Swing, nên dùng?","EDT trực tiếp","Thread riêng/Executor","while(true) trong paintComponent","Timer 1ms",1
+"Khi ghi text theo từng dòng, nên dùng?","ObjectOutputStream","DataOutputStream","BufferedWriter/PrintWriter","FileOutputStream",2
+"Cách gửi JSON thuận tiện hơn trong Java?","Tự nối chuỗi","java.net.http + thư viện JSON","Subprocess curl","Dùng Scanner cho vui",1
+"Khi server gửi nhiều câu hỏi liên tiếp, client nên xử lý thế nào?","Đọc tất cả rồi mới hiển thị","Đọc từng câu theo thứ tự, cache nếu cần","Chọn ngẫu nhiên để thêm kịch tính","Ngủ 5s giữa mỗi câu",1
+"Timeout socket trong Java thiết lập bằng?","Socket#setSoTimeout","Socket#setTimeLimit","Socket#setTimeout","Socket#deadline",0
+"Khi gặp EOFException khi đọc stream, thường là do?","Mạng siêu nhanh","Peer đóng kết nối","Luồng bị khóa bởi GC","Do không gọi flush()",1
+"Để đảm bảo gửi đủ dữ liệu qua TCP, ta cần?","Gọi flush() sau khi ghi","Chờ 24 giờ","Ráng cầu nguyện","Tăng độ sáng màn hình",0
+"So sánh TCP và UDP đúng nhất?","TCP tin cậy có thứ tự; UDP không đảm bảo","UDP luôn nhanh hơn mọi trường hợp","TCP dùng cho video realtime luôn","UDP có checksum SHA-256",0
+"Với bản tin lớn, chiến lược hợp lý là?","Chunking (chia nhỏ) & ghép lại","Nhét tất cả vào 1 Object","Base64 10 lần cho chắc","Viết vào System.err",0
+"Khi dùng ObjectInputStream, yêu cầu với lớp truyền là gì?","implements Serializable","implements Runnable","extends Thread","implements Closeable",0
+"Câu đố: Code chạy một lần thì ổn, chạy lần hai nổ StreamCorruptedException. Lý do hay gặp?","Tạo nhiều ObjectOutputStream trên cùng socket không đúng chỗ","Do RAM yếu","Gõ sai chính tả biến","Do icon IDE xấu",0

@@ -1,0 +1,20 @@
+"Giao thức nào cung cấp truyền tin cậy, hướng kết nối?",TCP,UDP,ICMP,ARP,0
+"Địa chỉ IPv4 có bao nhiêu bit?",16,32,64,128,1
+"Thiết bị nào hoạt động ở tầng 2 (Data Link)?",Hub,Switch,Router,Repeater,1
+"Giao thức phân giải địa chỉ IP sang MAC là?",DNS,DHCP,ARP,SMTP,2
+"Cổng mặc định của HTTPS là?",80,443,21,25,1
+"Tầng nào của mô hình OSI chịu trách nhiệm định tuyến gói?",Transport,Network,Session,Application,1
+"Ping sử dụng giao thức nào?",TCP,UDP,ICMP,ARP,2
+"CIDR /26 có bao nhiêu địa chỉ khả dụng (host usable)?",62,64,30,126,0
+"Thiết bị nào phân chia broadcast domain?",Hub,Switch,Router,Access Point,2
+"Nếu Wi-Fi yếu, thao tác đầu tiên nên thử là gì?","Đốt modem cho ấm","Khởi động lại router",Gọi nhà mạng,"Lắc laptop cho sóng mạnh",1
+"NAT dùng để làm gì?",Mã hóa gói tin,"Chuyển IP private ra public","Phát hiện xâm nhập","Tăng băng thông",1
+"Trong DHCP, gói tin đầu tiên client gửi đi là?",DHCPACK,DHCPDISCOVER,DHCPREQUEST,DHCPOFFER,1
+"DNS record nào ánh xạ tên sang IPv4?",AAAA,MX,A,CNAME,2
+"Đơn vị nhỏ nhất có thể truyền trên Ethernet là?",Frame,Packet,Segment,Bit,0
+"Thuật ngữ latency mô tả điều gì?",Tốc độ download,Độ trễ,"Độ rung lắc đường truyền","Băng thông tối đa",1
+"Tại sao cắm nhầm cáp vào port WAN có thể mất mạng nội bộ?",Vì cáp buồn,"Tạo vòng lặp định tuyến hoặc sai NAT","Do tĩnh điện","Do quá tải CPU",1
+"VPN chủ yếu dùng lớp nào để mã hóa/đóng gói?","Vật lý","Tầng mạng (IPsec) hoặc ứng dụng (TLS)","Chỉ tầng liên kết","Chỉ tầng phiên",1
+"Traceroute giúp ta biết điều gì?",Tốc độ CPU,"Đường đi gói tin qua các hop","Địa chỉ MAC của router","Password Wi-Fi",1
+"Khi băng thông là 100 Mbps, tối đa lý thuyết chuyển được bao nhiêu MB/s?","12.5","10","8","100",0
+"Nếu bạn ping 8.8.8.8 không được nhưng ping gateway được, khả năng cao vấn đề ở đâu?","Card mạng hỏng","Router nhà mạng/đường ra Internet","Dây chuột bị đứt","DNS nội bộ",1
