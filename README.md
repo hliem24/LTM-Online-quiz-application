@@ -75,7 +75,7 @@
 */
 
 
-## 🚀 3. Các project đã thực hiện
+## 🚀 3. Hình ảnh các chức năng
 
 <p align="center">
   <img src="docs/project photo/1..png" alt="Ảnh 1" width="800"/>
