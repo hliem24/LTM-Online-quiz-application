@@ -19,50 +19,117 @@
 
 </div>
 
-## 📖 1. Giới thiệu
-Ứng dụng Trắc nghiệm trực tuyến Client–Server được phát triển bằng Java, dựa trên giao thức TCP để đảm bảo việc trao đổi dữ liệu tin cậy và chính xác.
-Hệ thống cho phép sinh viên/kỹ thuật viên kết nối tới server, thực hiện làm bài trắc nghiệm, và nhận kết quả ngay sau khi hoàn thành.
+/*
+## 📖 1. Giới thiệu hệ thống
+Ứng dụng **trắc nghiệm Client–Server** sử dụng **TCP** cho phép nhiều người dùng làm bài trắc nghiệm qua mạng theo thời gian thực.
 
+- **Server**: trung tâm xác thực tài khoản, cung cấp danh mục bộ đề, phát câu hỏi, chấm điểm và lưu kết quả.
+- **Client (Java Swing)**: giao diện để **đăng ký/đăng nhập**, **chọn bộ đề**, **làm bài** (đồng hồ đếm ngược, thanh tiến độ, điều hướng Trước/Tiếp/Nộp), xem **tổng kết** và **lịch sử**.
+- **Lưu trữ dạng tệp** (không dùng DB) để triển khai đơn giản:
+  - `users.csv`: tài khoản (username, password_hash SHA-256, created_at).
+  - `questions/<type>/<set>.csv` + `<set>.cfg`: ngân hàng câu hỏi & thời lượng đề.
+  - `results.csv`: lịch sử kết quả thi (điểm, thời gian, bộ đề, IP…).
 
-Các chức năng chính: 
-1. Client kết nối đến server qua địa chỉ IP và port (mặc định: 5555). Server hỗ trợ nhiều client đồng thời thông qua cơ chế đa luồng, và yêu cầu người dùng nhập tên để xác định danh tính.
-2. Gửi và nhận câu hỏi – đáp án: Server gửi các câu hỏi trắc nghiệm đến client. Người dùng chọn đáp án, gửi về server; server kiểm tra và phản hồi kết quả đúng/sai theo thời gian thực.
+**Các chức năng chính:**
+1) **Kết nối & xác thực**: Client kết nối Server qua IP/port (mặc định **5555**). Hỗ trợ nhiều Client đồng thời (đa luồng). Pha AUTH với 2 chế độ: `LOGIN` / `REGISTER` (mật khẩu băm SHA-256 trước khi gửi).
+2) **Chọn bộ đề**: Server gửi **catalog** (Loại → Bộ đề). Client chọn loại/bộ đề qua hộp thoại “card style”.
+3) **Phát câu hỏi & làm bài**: Server gửi lần lượt đối tượng `Question`. Client chọn đáp án **0..3** (A..D) rồi gửi về; Server trả kết quả **đúng/sai** theo thời gian thực. Thời lượng **đếm ngược toàn bài** lấy từ tệp `.cfg` (ví dụ `seconds=600`).
+4) **Nộp bài / Hết giờ**: Người dùng có thể nộp sớm; hết giờ hệ thống tự nộp phần còn lại. Server trả `RESULT|username|correct/total` và ghi một dòng vào `results.csv`.
+5) **Xem kết quả**: Client có trình xem `results.csv` (bảng lịch sử), giao diện đồng nhất với ứng dụng.
 
+---
 
-## 🔧 2. Công nghệ sử dụng  
-Các công nghệ được sử dụng để xây dựng ứng dụng chat Client-Server sử dụng TCP với Java Swing:  
+## 🔧 2. Công nghệ sử dụng
+
+#### Java Core & Multithreading
+- Server dùng `ExecutorService` (ví dụ `Executors.newCachedThreadPool()`) để phục vụ **nhiều Client đồng thời**, mỗi Client chạy trên một luồng.
+- Đồng bộ ghi file bằng `synchronized`/lock để tránh xung đột khi nhiều luồng ghi `results.csv` / `users.csv`.
+
+#### Java Swing
+- Xây dựng GUI Client với các thành phần:
+  - `JFrame` (cửa sổ chính), `JDialog` (đăng nhập/đăng ký, chọn bộ đề, xác nhận nộp, kết quả),
+  - `JLabel`, `JRadioButton` + `ButtonGroup` (4 lựa chọn), `JButton` (Trước/Tiếp/Nộp),
+  - `JProgressBar` (tiến độ), `JOptionPane`, `JScrollPane`.
+- Giao diện “card style”, có đồng hồ đếm ngược và cảnh báo khi gần hết giờ.
+
+#### Java Sockets
+- Kết nối mạng TCP với `ServerSocket` (server) và `Socket` (client).
+- Truyền dữ liệu bằng `ObjectInputStream`/`ObjectOutputStream`:
+  - Pha **AUTH** → **CATALOG** → **PICK** → **Q&A** → **SUMMARY**.
+  - Gửi/nhận `Question` (Serializable) và kiểu nguyên thủy (int/boolean/String).
+- Đảm bảo tuần tự & tin cậy cho luồng câu hỏi/đáp án.
+
+#### File I/O
+- Đọc/ghi tệp với `java.nio.file.*` và `java.io.*`:
+  - `users.csv`: lưu username + SHA-256 mật khẩu.
+  - `questions/<type>/<set>.csv`: từng dòng `prompt, optionA, optionB, optionC, optionD, correctIndex(0-3)`.
+  - `questions/<type>/<set>.cfg`: `seconds=<số giây>`.
+  - `results.csv`: ghi `sessionId, username, score, total, percent, startAt, endAt, durationMs, clientIP, clientHost, type, set`.
+- Bộ phân tích CSV đơn giản xử lý dấu ngoặc kép và dấu phẩy trong trường.
+
+#### Hỗ trợ
+- `MessageDigest` (SHA-256) để băm mật khẩu phía Client trước khi gửi.
+- `SimpleDateFormat`/`LocalDateTime` để đóng dấu thời gian.
+- `Collections`/`ArrayList` quản lý danh mục bộ đề, lịch sử câu hỏi/đáp án phía Client.
+
+*/
+
 
 ## 🚀 3. Các project đã thực hiện
 
 <p align="center">
-  <img src="docs/anhGiaoDien.jpg" alt="Ảnh 1" width="800"/>
+  <img src="docs/project photo/1..png" alt="Ảnh 1" width="800"/>
 </p>
 
 <p align="center">
-  <em>Hình 1: Giao diện khi vào ứng dụng  </em>
+  <em>Giao diện khi vào ứng dụng  </em>
 </p>
 
 <p align="center">
-  <img src="docs/giaodienkhidaketnoisever.jpg" alt="Ảnh 2" width="700"/>
+  <img src="docs/project photo/2..png" alt="Ảnh 2" width="700"/>
 </p>
 <p align="center">
-  <em> Hình 2: Client sau khi kết nối sever</em>
+  <em>Client đăng nhập </em>
 </p>
 
 
 <p align="center">
-  <img src="docs/saukhilamxong.jpg" alt="Ảnh 3" width="500"/>
+  <img src="docs/project photo/3..png" alt="Ảnh 3" width="500"/>
  
 </p>
 <p align="center">
-  <em> Hình 3: Sau khi làm xong bài  </em>
+  <em> Client đăng ký </em>
 </p>
 
 <p align="center">
-    <img src="docs/ketquasaukhixg.png" alt="Ảnh 4" width="450"/>
+    <img src="docs/project photo/4..png" alt="Ảnh 4" width="450"/>
 </p>
 <p align="center">
-  <em> Hình 4: Kết quả sau khi lưu trữ </em>
+  <em> Giao diện sau khi đăng nhập </em>
+</p>
+<p align="center">
+    <img src="docs/project photo/5...png" alt="Ảnh 4" width="450"/>
+</p>
+<p align="center">
+  <em> Client lịch sử làm bài  </em>
+</p>
+<p align="center">
+    <img src="docs/project photo/6..png" alt="Ảnh 4" width="450"/>
+</p>
+<p align="center">
+  <em> Client chọn bộ đề   </em>
+</p>
+<p align="center">
+    <img src="docs/project photo/7..png" alt="Ảnh 4" width="450"/>
+</p>
+<p align="center">
+  <em> Giao diện khi bắt đầu làm   </em>
+</p>
+<p align="center">
+    <img src="docs/project photo/8..png" alt="Ảnh 4" width="450"/>
+</p>
+<p align="center">
+  <em> Giao diện khi hoàn thành xong bài   </em>
 </p>
 
 ## 📝 4. Hướng dẫn cài đặt và sử dụng
