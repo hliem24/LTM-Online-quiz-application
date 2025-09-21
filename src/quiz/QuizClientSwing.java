@@ -252,7 +252,7 @@ public class QuizClientSwing extends JFrame {
             return true;
 
         } catch (Exception ex) {
-            showWarnDialog("Lỗi", "Không thể kết nối: " + ex.getMessage());
+            showWarnDialog("Lỗi", "đang không thể kết nối đến sever");
             closeQuietly();
             return false;
         }
